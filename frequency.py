@@ -6,11 +6,14 @@ def calculate_s(file_path):
 
     row_num = sheet.nrows-2
 
-    frequency_vector = np.zeros(row_num)
+    square_sum = 0
+    sum = 0
+    for index in range(0, row_num):
+        square_sum = square_sum + sheet.cell(index+1, 2).value ** 2
+        sum = sum + sheet.cell(index+1, 2).value
+        print square_sum
+        print sum
 
-    for index in range(0, row_num-1):
-        frequency_vector[index] = sheet.cell(index+1, 2).value
-
-    s = np.dot(frequency_vector, frequency_vector)/np.linalg.norm(frequency_vector)
+    s = square_sum/sum**2
 
     return s
